@@ -14,7 +14,7 @@ class RedditComments {
     this.comments,
   });
 
-  List<Comment> comments;
+  List<Comment>? comments;
 
   factory RedditComments.fromJson(Map<String, dynamic> json) => RedditComments(
         comments: json["data"] == null
@@ -25,7 +25,7 @@ class RedditComments {
   Map<String, dynamic> toJson() => {
         "comments": comments == null
             ? null
-            : List<dynamic>.from(comments.map((x) => x.toJson())),
+            : List<dynamic>.from(comments!.map((x) => x.toJson())),
       };
 
 }
@@ -65,41 +65,41 @@ class Comment {
     this.subredditId,
   });
 
-  dynamic approvedAtUtc;
-  String author;
-  dynamic authorFlairBackgroundColor;
-  dynamic authorFlairCssClass;
-  List<dynamic> authorFlairRichtext;
-  dynamic authorFlairTemplateId;
-  dynamic authorFlairText;
-  dynamic authorFlairTextColor;
-  AuthorFlairType authorFlairType;
-  String authorFullname;
-  dynamic bannedAtUtc;
-  String body;
-  bool canModPost;
-  bool collapsed;
-  dynamic collapsedReason;
-  List<Comment> comments;
-  int createdUtc;
-  dynamic distinguished;
-  bool edited;
-  String id;
-  bool isSubmitter;
-  String linkId;
-  bool noFollow;
-  String parentId;
-  String permalink;
-  int retrievedOn;
-  int score;
-  bool sendReplies;
-  bool stickied;
-  Subreddit subreddit;
-  SubredditId subredditId;
+  dynamic? approvedAtUtc;
+  String? author;
+  dynamic? authorFlairBackgroundColor;
+  dynamic? authorFlairCssClass;
+  List<dynamic>? authorFlairRichtext;
+  dynamic? authorFlairTemplateId;
+  dynamic? authorFlairText;
+  dynamic? authorFlairTextColor;
+  AuthorFlairType? authorFlairType;
+  String? authorFullname;
+  dynamic? bannedAtUtc;
+  String? body;
+  bool? canModPost;
+  bool? collapsed;
+  dynamic? collapsedReason;
+  List<Comment>? comments;
+  int? createdUtc;
+  dynamic? distinguished;
+  bool? edited;
+  String? id;
+  bool? isSubmitter;
+  String? linkId;
+  bool? noFollow;
+  String? parentId;
+  String? permalink;
+  int? retrievedOn;
+  int? score;
+  bool? sendReplies;
+  bool? stickied;
+  Subreddit? subreddit;
+  SubredditId? subredditId;
 
   factory Comment.fromJson(Map<String, dynamic> json) => Comment(
         approvedAtUtc: json["approved_at_utc"],
-        author: json["author"] == null ? null : json["author"],
+        author: json["author"],
         authorFlairBackgroundColor: json["author_flair_background_color"],
         authorFlairCssClass: json["author_flair_css_class"],
         authorFlairRichtext: json["author_flair_richtext"] == null
@@ -112,26 +112,26 @@ class Comment {
             ? null
             : authorFlairTypeValues.map[json["author_flair_type"]],
         authorFullname:
-            json["author_fullname"] == null ? null : json["author_fullname"],
+            json["author_fullname"],
         bannedAtUtc: json["banned_at_utc"],
-        body: json["body"] == null ? null : json["body"],
-        canModPost: json["can_mod_post"] == null ? null : json["can_mod_post"],
-        collapsed: json["collapsed"] == null ? null : json["collapsed"],
+        body: json["body"],
+        canModPost: json["can_mod_post"],
+        collapsed: json["collapsed"],
         collapsedReason: json["collapsed_reason"],
-        createdUtc: json["created_utc"] == null ? null : json["created_utc"],
+        createdUtc: json["created_utc"],
         distinguished: json["distinguished"],
-        edited: json["edited"] == null ? null : json["edited"],
-        id: json["id"] == null ? null : json["id"],
-        isSubmitter: json["is_submitter"] == null ? null : json["is_submitter"],
+        edited: json["edited"],
+        id: json["id"],
+        isSubmitter: json["is_submitter"],
         linkId:
-            json["link_id"] == null ? null : json["link_id"],
-        noFollow: json["no_follow"] == null ? null : json["no_follow"],
-        parentId: json["parent_id"] == null ? null : json["parent_id"],
-        permalink: json["permalink"] == null ? null : json["permalink"],
-        retrievedOn: json["retrieved_on"] == null ? null : json["retrieved_on"],
-        score: json["score"] == null ? null : json["score"],
-        sendReplies: json["send_replies"] == null ? null : json["send_replies"],
-        stickied: json["stickied"] == null ? null : json["stickied"],
+            json["link_id"],
+        noFollow: json["no_follow"],
+        parentId: json["parent_id"],
+        permalink: json["permalink"],
+        retrievedOn: json["retrieved_on"],
+        score: json["score"],
+        sendReplies: json["send_replies"],
+        stickied: json["stickied"],
         subreddit: json["subreddit"] == null
             ? null
             : subredditValues.map[json["subreddit"]],
@@ -142,41 +142,41 @@ class Comment {
 
   Map<String, dynamic> toJson() => {
         "approved_at_utc": approvedAtUtc,
-        "author": author == null ? null : author,
+        "author": author,
         "author_flair_background_color": authorFlairBackgroundColor,
         "author_flair_css_class": authorFlairCssClass,
         "author_flair_richtext": authorFlairRichtext == null
             ? null
-            : List<dynamic>.from(authorFlairRichtext.map((x) => x)),
+            : List<dynamic>.from(authorFlairRichtext!.map((x) => x)),
         "author_flair_template_id": authorFlairTemplateId,
         "author_flair_text": authorFlairText,
         "author_flair_text_color": authorFlairTextColor,
         "author_flair_type": authorFlairType == null
             ? null
             : authorFlairTypeValues.reverse[authorFlairType],
-        "author_fullname": authorFullname == null ? null : authorFullname,
+        "author_fullname": authorFullname,
         "banned_at_utc": bannedAtUtc,
-        "body": body == null ? null : body,
-        "can_mod_post": canModPost == null ? null : canModPost,
-        "collapsed": collapsed == null ? null : collapsed,
+        "body": body,
+        "can_mod_post": canModPost,
+        "collapsed": collapsed,
         "collapsed_reason": collapsedReason,
-        "created_utc": createdUtc == null ? null : createdUtc,
+        "created_utc": createdUtc,
         "distinguished": distinguished,
-        "edited": edited == null ? null : edited,
-        "id": id == null ? null : id,
-        "is_submitter": isSubmitter == null ? null : isSubmitter,
-        "link_id": linkId == null ? null : linkId,
-        "no_follow": noFollow == null ? null : noFollow,
-        "parent_id": parentId == null ? null : parentId,
-        "permalink": permalink == null ? null : permalink,
-        "retrieved_on": retrievedOn == null ? null : retrievedOn,
-        "score": score == null ? null : score,
-        "send_replies": sendReplies == null ? null : sendReplies,
-        "stickied": stickied == null ? null : stickied,
+        "edited": edited,
+        "id": id,
+        "is_submitter": isSubmitter,
+        "link_id": linkId,
+        "no_follow": noFollow,
+        "parent_id": parentId,
+        "permalink": permalink,
+        "retrieved_on": retrievedOn,
+        "score": score,
+        "send_replies": sendReplies,
+        "stickied": stickied,
         "subreddit":
-            subreddit == null ? null : subredditValues.reverse[subreddit],
+            subredditValues.reverse[subreddit],
         "subreddit_id":
-            subredditId == null ? null : subredditIdValues.reverse[subredditId],
+            subredditIdValues.reverse[subredditId],
       };
 }
 
@@ -195,7 +195,7 @@ final subredditIdValues = EnumValues({"t5_2qh1e": SubredditId.T5_2_QH1_E});
 
 class EnumValues<T> {
   Map<String, T> map;
-  Map<T, String> reverseMap;
+  Map<T, String>? reverseMap;
 
   EnumValues(this.map);
 
@@ -203,6 +203,6 @@ class EnumValues<T> {
     if (reverseMap == null) {
       reverseMap = map.map((k, v) => new MapEntry(v, k));
     }
-    return reverseMap;
+    return reverseMap!;
   }
 }

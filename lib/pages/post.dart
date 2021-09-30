@@ -9,24 +9,24 @@ import 'package:reddit_demo/services/api_manager.dart';
 
 class PostPage extends StatefulWidget {
   final Post post;
-  const PostPage({Key key, @required this.post}) : super(key: key);
+  const PostPage({Key? key, required this.post}) : super(key: key);
 
   @override
   _PostPageState createState() => _PostPageState();
 }
 
 class _PostPageState extends State<PostPage> {
-  Future<List<Comment>> _redditComments;
+  Future<List<Comment>>? _redditComments;
 
   void initState() {
-    _redditComments = API_Manager().getComments(widget.post.id);
+    _redditComments = API_Manager().getComments(widget.post.id!);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.post.title)),
+      appBar: AppBar(title: Text(widget.post.title!)),
       body: Column(
         children: [
           PostCard(post: widget.post),
@@ -36,9 +36,9 @@ class _PostPageState extends State<PostPage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
-                        itemCount: snapshot.data.length,
+                        itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                            return CommentCard(comment: snapshot.data[index]);
+                            return CommentCard(comment: snapshot.data![index]);
                         });
                   } else {
                     return Center(child: CircularProgressIndicator());

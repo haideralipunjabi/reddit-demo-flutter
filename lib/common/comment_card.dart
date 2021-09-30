@@ -5,17 +5,17 @@ import 'package:reddit_demo/services/api_manager.dart';
 class CommentCard extends StatefulWidget {
   final Comment comment;
 
-  CommentCard({Key key, @required this.comment}) : super(key: key);
+  CommentCard({Key? key, required this.comment}) : super(key: key);
 
   @override
   _CommentCardState createState() => _CommentCardState();
 }
 
 class _CommentCardState extends State<CommentCard> {
-  Future<List<Comment>> _redditSubComments;
+  Future<List<Comment>>? _redditSubComments;
   bool SubCommentsLoaded = false;
   void initState() {
-    _redditSubComments = API_Manager().getSubComments(widget.comment.id);
+    _redditSubComments = API_Manager().getSubComments(widget.comment.id!);
     super.initState();
   }
 
@@ -41,11 +41,11 @@ class _CommentCardState extends State<CommentCard> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    widget.comment.author,
+                    widget.comment.author!,
                     style: TextStyle(color: Colors.grey),
                   ),
                   Text(
-                    widget.comment.body,
+                    widget.comment.body!,
                     style: TextStyle(fontSize: 20.0),
                   ),
                   if (SubCommentsLoaded)
@@ -58,10 +58,10 @@ class _CommentCardState extends State<CommentCard> {
                               return ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
-                                  itemCount: snapshot.data.length,
+                                  itemCount: snapshot.data!.length,
                                   itemBuilder: (context, index) {
                                     return CommentCard(
-                                        comment: snapshot.data[index]);
+                                        comment: snapshot.data![index]);
                                   });
                             } else {
                               return Container(

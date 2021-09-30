@@ -9,19 +9,18 @@ import 'package:reddit_demo/models/reddit_comments.dart';
 import "package:http/http.dart" as http;
 
 class API_Manager {
-  Future<List<Post>> getPosts(String subreddit, String sort) async {
+  Future<List<Post>> getPosts(String subreddit, String? sort) async {
     var client = http.Client();
-    log(Strings.redditPostsUrl(subreddit, sort));
     var response =
         await client.get(Uri.parse(Strings.redditPostsUrl(subreddit, sort)));
     if (response.statusCode == 200) {
       var jsonString = response.body;
       var jsonMap = json.decode(jsonString);
       RedditData redditData = RedditData.fromJson(jsonMap);
-      return List.from(redditData.posts
-          .where((element) => element.thumbnail.startsWith("https://")));
+      return List.from(redditData.posts!
+          .where((element) => element.thumbnail!.startsWith("https://")));
     }
-    return null;
+    return List.empty();
   }
 
   Future<List<Comment>> getComments(String postId) async {
@@ -32,10 +31,10 @@ class API_Manager {
       var jsonString = response.body;
       var jsonMap = json.decode(jsonString);
       RedditComments redditComments = RedditComments.fromJson(jsonMap);
-      return List.from(redditComments.comments
+      return List.from(redditComments.comments!
           .where((element) => element.linkId == element.parentId));
     }
-    return null;
+    return List.empty();
   }
 
   Future<List<Comment>> getSubComments(String parentId) async {
@@ -46,8 +45,8 @@ class API_Manager {
       var jsonString = response.body;
       var jsonMap = json.decode(jsonString);
       RedditComments redditComments = RedditComments.fromJson(jsonMap);
-      return redditComments.comments;
+      return redditComments.comments!;
     }
-    return null;
+    return List.empty();
   }
 }

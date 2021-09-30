@@ -13,8 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<List<Post>> _redditPosts;
-  String subreddit;
+  Future<List<Post>>? _redditPosts;
+  String subreddit = "FlutterDev";
   final dialogTextController = TextEditingController();
   SortType _sortType = SortType.sort_top;
 
@@ -27,13 +27,12 @@ class _HomePageState extends State<HomePage> {
         return "created_utc";
         break;
       default:
-        return null;
+        return "score";
     }
   }
 
   @override
   void initState() {
-    subreddit = "FlutterDev";
     _redditPosts = API_Manager().getPosts(subreddit, getSortString());
     super.initState();
   }
@@ -94,8 +93,8 @@ class _HomePageState extends State<HomePage> {
                   leading: Radio<SortType>(
                     value: SortType.sort_top,
                     groupValue: _sortType,
-                    onChanged: (SortType value) {
-                      changeSort(value);
+                    onChanged: (SortType? value) {
+                      changeSort(value!);
                       _dismissDialog();
                     },
                   ),
@@ -105,8 +104,8 @@ class _HomePageState extends State<HomePage> {
                   leading: Radio<SortType>(
                     value: SortType.sort_new,
                     groupValue: _sortType,
-                    onChanged: (SortType value) {
-                      changeSort(value);
+                    onChanged: (SortType? value) {
+                      changeSort(value!);
                       _dismissDialog();
                     },
                   ),
@@ -166,12 +165,12 @@ class _HomePageState extends State<HomePage> {
           }
           if (snapshot.hasData) {
             return ListView.builder(
-                itemCount: snapshot.data.length,
+                itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
-                  return PostCard(post: snapshot.data[index]);
+                  return PostCard(post: snapshot.data![index]);
                 });
           }
-          return null;
+          return Center(child: Text("An Error Occured while loading"),);
         },
       )),
     );

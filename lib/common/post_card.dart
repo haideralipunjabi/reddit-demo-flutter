@@ -4,7 +4,7 @@ import 'package:reddit_demo/pages/post.dart';
 
 class PostCard extends StatelessWidget {
   final Post post;
-  const PostCard({Key key, @required this.post}) : super(key: key);
+  const PostCard({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class PostCard extends StatelessWidget {
                   Row(children: [
                     if (post.thumbnail != null)
                       Image.network(
-                        post.thumbnail,
+                        post.thumbnail!,
                         fit: BoxFit.fill,
-                        errorBuilder: (BuildContext context, Object exception,
-                            StackTrace stackTrace) {
+                        errorBuilder: (BuildContext? context, Object? exception,
+                            StackTrace? stackTrace) {
                           return Icon(Icons.error);
                         },
                       ),
@@ -36,7 +36,7 @@ class PostCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  post.title,
+                                  post.title!,
                                   style: TextStyle(
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.bold),
@@ -45,7 +45,7 @@ class PostCard extends StatelessWidget {
                                   children: [
                                     Icon(Icons.person),
                                     Text(
-                                      post.author,
+                                      post.author!,
                                     ),
                                   ],
                                 )
