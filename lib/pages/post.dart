@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:reddit_demo/common/comment_card.dart';
 import 'package:reddit_demo/common/post_card.dart';
@@ -19,7 +17,7 @@ class _PostPageState extends State<PostPage> {
   Future<List<Comment>>? _redditComments;
 
   void initState() {
-    _redditComments = API_Manager().getComments(widget.post.id!);
+    _redditComments = APIManager().getComments(widget.post.id!);
     super.initState();
   }
 

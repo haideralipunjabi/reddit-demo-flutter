@@ -22,10 +22,8 @@ class _HomePageState extends State<HomePage> {
     switch (_sortType) {
       case SortType.sort_top:
         return "score";
-        break;
       case SortType.sort_new:
         return "created_utc";
-        break;
       default:
         return "score";
     }
@@ -33,7 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _redditPosts = API_Manager().getPosts(subreddit, getSortString());
+    _redditPosts = APIManager().getPosts(subreddit, getSortString());
     super.initState();
   }
 
@@ -41,7 +39,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       subreddit = _subreddit;
       _redditPosts = null;
-      _redditPosts = API_Manager().getPosts(subreddit, getSortString());
+      _redditPosts = APIManager().getPosts(subreddit, getSortString());
     });
   }
 
@@ -49,7 +47,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _sortType = sort;
       _redditPosts = null;
-      _redditPosts = API_Manager().getPosts(subreddit, getSortString());
+      _redditPosts = APIManager().getPosts(subreddit, getSortString());
     });
   }
 

@@ -65,24 +65,24 @@ class Comment {
     this.subredditId,
   });
 
-  dynamic? approvedAtUtc;
+  dynamic approvedAtUtc;
   String? author;
-  dynamic? authorFlairBackgroundColor;
-  dynamic? authorFlairCssClass;
+  dynamic authorFlairBackgroundColor;
+  dynamic authorFlairCssClass;
   List<dynamic>? authorFlairRichtext;
-  dynamic? authorFlairTemplateId;
-  dynamic? authorFlairText;
-  dynamic? authorFlairTextColor;
+  dynamic authorFlairTemplateId;
+  dynamic authorFlairText;
+  dynamic authorFlairTextColor;
   AuthorFlairType? authorFlairType;
   String? authorFullname;
-  dynamic? bannedAtUtc;
+  dynamic bannedAtUtc;
   String? body;
   bool? canModPost;
   bool? collapsed;
-  dynamic? collapsedReason;
+  dynamic collapsedReason;
   List<Comment>? comments;
   int? createdUtc;
-  dynamic? distinguished;
+  dynamic distinguished;
   bool? edited;
   String? id;
   bool? isSubmitter;

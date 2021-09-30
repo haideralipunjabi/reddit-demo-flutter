@@ -102,9 +102,9 @@ class Post {
   List<dynamic>? allAwardings;
   bool? allowLiveComments;
   String? author;
-  dynamic? authorFlairCssClass;
+  dynamic authorFlairCssClass;
   List<dynamic>? authorFlairRichtext;
-  dynamic? authorFlairText;
+  dynamic authorFlairText;
   FlairType? authorFlairType;
   String? authorFullname;
   bool? authorIsBlocked;

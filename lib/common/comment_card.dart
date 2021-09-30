@@ -13,15 +13,15 @@ class CommentCard extends StatefulWidget {
 
 class _CommentCardState extends State<CommentCard> {
   Future<List<Comment>>? _redditSubComments;
-  bool SubCommentsLoaded = false;
+  bool subCommentsLoaded = false;
   void initState() {
-    _redditSubComments = API_Manager().getSubComments(widget.comment.id!);
+    _redditSubComments = APIManager().getSubComments(widget.comment.id!);
     super.initState();
   }
 
   void toggleSubComments() {
     setState(() {
-      SubCommentsLoaded = !SubCommentsLoaded;
+      subCommentsLoaded = !subCommentsLoaded;
     });
   }
 
@@ -48,7 +48,7 @@ class _CommentCardState extends State<CommentCard> {
                     widget.comment.body!,
                     style: TextStyle(fontSize: 20.0),
                   ),
-                  if (SubCommentsLoaded)
+                  if (subCommentsLoaded)
                     Flexible(
                         fit: FlexFit.loose,
                         child: FutureBuilder<List<Comment>>(
